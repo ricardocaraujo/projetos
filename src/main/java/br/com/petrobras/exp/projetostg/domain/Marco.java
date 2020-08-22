@@ -36,8 +36,6 @@ public class Marco implements Serializable {
 		
 	}
 	
-	
-
 	public Marco(Integer id, String descricao, LocalDate dataInicio, LocalDate dataTermino, Projeto projeto) {
 		super();
 		this.id = id;
@@ -46,8 +44,6 @@ public class Marco implements Serializable {
 		this.dataTermino = dataTermino;
 		this.projeto = projeto;
 	}
-
-
 
 	public Integer getId() {
 		return id;

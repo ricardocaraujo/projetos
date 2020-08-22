@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Controle de Projetos TG</title>
+    
+    <!-- Bootstrap core CSS -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Custom styles -->
+    <link href="css/estilos.css" rel="stylesheet"/>
+
+
+</head>
+<meta charset="ISO-8859-1">
+<title>Projetos TG</title>
+</head>
+<body>
+	<header th="fragment/header :: cabecalho">
+		<div>
+		header
+		</div>
+	</header>
+	<div>
+		<aside>
+			<nav>
+				<span>menu
+				</span>
+			</nav>
+		</aside>
+		<section> <!-- layout:fragment="conteudo" -->
+			<div>conteúdo principal</div>
+		</section>
+	</div>
+	<footer th:replace="fragment/footer :: ropade">
+		<div>footer</div>
+	</footer>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

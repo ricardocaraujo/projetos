@@ -1,17 +1,23 @@
 package br.com.petrobras.exp.projetostg.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.petrobras.exp.projetostg.domain.enums.LinhaPesquisa;
 
 @Entity
 public class Projeto implements Serializable {
@@ -30,7 +36,7 @@ public class Projeto implements Serializable {
 	private String justificativa;
 	
 	@OneToMany(mappedBy = "projeto")
-	private List<Marco> marco;
+	private List<Marco> marcos = new ArrayList<>();
 	
 	@JsonFormat(pattern="dd/MM/yyy")
 	private Date dataInicio;
@@ -38,23 +44,24 @@ public class Projeto implements Serializable {
 	@JsonFormat(pattern="dd/MM/yyy")
 	private Date dataTermino;
 	
-	public Projeto() {
+	@Enumerated(EnumType.STRING)
+	private LinhaPesquisa linhaPesquisa;
 	
+	public Projeto() {	
 	}
 
-	public Projeto(Integer id, String titulo, String objetivo, String justificativa, List<Marco> marco, Date dataInicio,
-			Date dataTermino) {
+	public Projeto(Integer id, String titulo, String objetivo, String justificativa, List<Marco> marcos, Date dataInicio,
+			Date dataTermino, LinhaPesquisa linhaPesquisa) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.objetivo = objetivo;
 		this.justificativa = justificativa;
-		this.marco = marco;
+		this.marcos = marcos;
 		this.dataInicio = dataInicio;
 		this.dataTermino = dataTermino;
+		this.linhaPesquisa = linhaPesquisa;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -88,12 +95,12 @@ public class Projeto implements Serializable {
 		this.justificativa = justificativa;
 	}
 
-	public List<Marco> getMarco() {
-		return marco;
+	public List<Marco> getMarcos() {
+		return marcos;
 	}
 
-	public void setMarco(List<Marco> marco) {
-		this.marco = marco;
+	public void setMarco(Marco marco) {
+		this.marcos.add(marco);
 	}
 
 	public Date getDataInicio() {
@@ -112,6 +119,14 @@ public class Projeto implements Serializable {
 		this.dataTermino = dataTermino;
 	}
 
+	public LinhaPesquisa getLinhaPesquisa() {
+		return linhaPesquisa;
+	}
+
+	public void setLinhaPesquisa(LinhaPesquisa linhaPesquisa) {
+		this.linhaPesquisa = linhaPesquisa;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,7 +135,7 @@ public class Projeto implements Serializable {
 		result = prime * result + ((dataTermino == null) ? 0 : dataTermino.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((justificativa == null) ? 0 : justificativa.hashCode());
-		result = prime * result + ((marco == null) ? 0 : marco.hashCode());
+		result = prime * result + ((marcos == null) ? 0 : marcos.hashCode());
 		result = prime * result + ((objetivo == null) ? 0 : objetivo.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
@@ -155,10 +170,10 @@ public class Projeto implements Serializable {
 				return false;
 		} else if (!justificativa.equals(other.justificativa))
 			return false;
-		if (marco == null) {
-			if (other.marco != null)
+		if (marcos == null) {
+			if (other.marcos != null)
 				return false;
-		} else if (!marco.equals(other.marco))
+		} else if (!marcos.equals(other.marcos))
 			return false;
 		if (objetivo == null) {
 			if (other.objetivo != null)
