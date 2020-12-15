@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+	<main layout:fragment="conteudo">
+		<div class="container">
+			<div class="row row-cols-1 row-cols-md-3"  >
+				<div class="col mb-4" th:each="projeto : ${projetos}">
+					<div class="card border-dark">					
+						<table class="table">					
+							<thead >
+								<th colspan="2" class="card-header" th:text=${projeto.titulo}></th>
+							</thead>
+							<tbody >
+								<tr>
+								  <td style="width: 50px">Objetivo</td>
+								  <td><small class="form-text text-muted" th:text="${projeto.objetivo}"></small></td>	
+								</tr>
+								<tr>
+								  <td>Justificativa</td>
+								  <td><small class="form-text text-muted" th:text="${projeto.justificativa}"></small></td>	
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>

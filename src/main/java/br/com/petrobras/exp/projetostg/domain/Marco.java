@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Marco implements Serializable {
 	
@@ -25,8 +30,10 @@ public class Marco implements Serializable {
 	
 	private String descricao;
 	
+	
 	private LocalDate dataInicio;
 	
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dataTermino;
 	
 	@ManyToOne

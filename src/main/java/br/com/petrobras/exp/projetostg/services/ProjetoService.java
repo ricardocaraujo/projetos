@@ -27,8 +27,10 @@ public class ProjetoService {
 		return (Projeto) projetoRepository.getOne(id);
 	}
 	
-	public Projeto fromDTO(ProjetoDTO objDTO) {
-		return new Projeto(null, objDTO.getTitulo(), objDTO.getObjetivo(), objDTO.getJustificativa(), objDTO.getMarcos(), 
-							objDTO.getDataInicio(), objDTO.getDataTermino(), objDTO.getLinhaPesquisa());		
-	}
+	/*
+	 * public Projeto fromDTO(ProjetoDTO objDTO) { return new Projeto(null,
+	 * objDTO.getTitulo(), objDTO.getObjetivo(), objDTO.getJustificativa(),
+	 * objDTO.getMarcos(), objDTO.getDataInicio(), objDTO.getDataTermino(),
+	 * objDTO.getLinhaPesquisa()); }
+	 */
 }

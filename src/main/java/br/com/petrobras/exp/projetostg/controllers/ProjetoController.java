@@ -65,6 +65,7 @@ public class ProjetoController {
 	public String listaProjetos(Model model) {
 		Iterable<Projeto> lista = projetoService.findAll();
 		model.addAttribute("projetos", lista);
+		lista.forEach((p) -> System.out.println(p.getTitulo()));
 		return "listaprojetos";
 	}
 //		Projeto projeto = projetoService.findById(id);
